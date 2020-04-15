@@ -1,4 +1,4 @@
-y = 12
+int y = 0;
 
 void setup() {
   size(600, 600);
@@ -11,6 +11,8 @@ void setup() {
 void draw() {
   fill(0, 0, 255);
   ellipse(width/2, height/2, 50, 50);
+  PVector y = new PVector(100, 100);
+
   }
   
   
