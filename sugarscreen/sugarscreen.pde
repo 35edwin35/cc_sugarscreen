@@ -1,35 +1,57 @@
-PVector pos = new PVector(0,0);
-PVector dir = new PVector(1,1);
-
-void setup(){
-  
-  size(600,600); 
-  background(100); 
-  fill(255,0,0); 
-  ellipse(width/2, height/2, 50, 50);
+PVector pos = new PVector( 0, 0);
+PVector direction = new PVector( 0, 0);
+int max_speed=10;
+void setup()
+{
+  direction.x=random(1,max_speed);
+  direction.y=random(1,max_speed);
+  size(600, 600);
+  background(100);
+  //fill(255,0,0);
+  //ellipse( width/2, , 50, 50);
   
 }
 
-void draw(){
-  fill(0,0,255); 
+void draw()
+{
   background(100);
+  fill(0, 0 ,255);
   ellipse(pos.x, pos.y, 50, 50);
-  pos.x += dir.x;
-  pos.y += dir.y;
-   switch (int(pos.x)) {
-    case 25:
-      dir.x = 1;
-      break;
-    case 575:
-      dir.x = -1;
-      break;
+  if (pos.x < 0)
+  {
+    direction.x=+random(1,max_speed);
+    
   }
-  switch (int(pos.y)) {
-    case 25:
-      dir.y = 1;
-      break;
-    case 575:
-      dir.y = -1;
-      break;
+  if (pos.x >= 600)
+  {
+    direction.x=-random(1,max_speed);
+    
   }
+  if (pos.y < 0)
+  {
+    direction.y=+random(1,max_speed);
+    
+  }
+  if (pos.y >= 600)
+  {
+    direction.y=-random(1,max_speed);
+    
+  }
+  pos.y=pos.y+direction.y;
+  pos.x=pos.x+direction.x;
+}
+
+class Ball {
+PVector pos;
+int size;
+Ball(int _size)
+{
+  pos = new PVector(width/2, height/2);
+  size = _size;
+}
+
+void display(){
+Ball ball = new Ball(50);
+ball.display();
+}
 }
